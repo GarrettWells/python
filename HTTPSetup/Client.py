@@ -4,12 +4,16 @@
 # This program creates a test client
 #
 # The address/port of the request can be edited in config.py
-# Requires Python 3.6 or higher
+# Requires
+#   - Python >= 3.6
+#   - Pillow >= 5.2.0
 
-import os
+
 import webbrowser
 from http.client import *
 from io import BytesIO
+import tempfile
+from time import sleep
 
 from PIL import Image
 
@@ -20,7 +24,7 @@ class Client:
 
     def __init__(self):
         client = HTTPConnection(SERVER_ADDRESS, PORT)
-        url = '/test.jpg'
+        url = '/test.html'
         client.request('GET', url)
         response = client.getresponse()
 
@@ -30,14 +34,15 @@ class Client:
             Image.open(BytesIO(img_bytes)).show()  # BytesIO can be used as a file, which Image.open accepts as input
 
         elif url == '/test.html':
-            web_page = response.read()  # web page is currently stored as a byte string
-            path = os.path.abspath('temp.html')  # get path of to-be temp file
-            url = 'file://' + path  # tell web browser the web page is local
+            time_to_wait = 1
 
-            with open(path, 'w') as f:  # write html code to temp file
-                f.write(web_page.decode())
-            webbrowser.open(url)  # open web page
-            os.remove(path)  # remove web page from storage
+            web_page = response.read()  # web page is currently stored as a byte string
+            with tempfile.TemporaryFile(mode='w+', suffix='.html') as temp_file:  # create a temp file
+                path = temp_file.name  # get the path of the temp file
+                temp_file.write(web_page.decode())  # write html code to temp file
+                temp_file.seek(0)
+                webbrowser.open(path)  # open web page
+                sleep(time_to_wait)  # give time for the web browser to open
         elif url == '/test.txt':
             txt = response.read().decode()  # read the byte string from the response, then decode it to a normal string
             print(txt)
