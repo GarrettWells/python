@@ -136,7 +136,8 @@
                 "sha256:a0db70e3384f1227bc40e22e9d77db3a54e02b54b48cf6b0c22ddfc0b688542d",
                 "sha256:c1f4d74e4c4a5681e77fbee5a7b0599a91ca39a8e260f2839a9a764382994f7f",
                 "sha256:cf02668c8633a41782b5244e04d5d0689847ac535cdf2fea66e4cac7dd772895",
-                "sha256:e848bf533f0d6cbc336b4cf01dd1aa7873174ba7304a620baa7d663d1d0ce879"
+                "sha256:e848bf533f0d6cbc336b4cf01dd1aa7873174ba7304a620baa7d663d1d0ce879",
+                "sha256:96c9eb82c15fe2c570a849ad7c95eee40988ad459f4632dd228a6e502136f561"
             ],
             "path": "./Shapely-1.6.4.post1-cp37-cp37m-win_amd64.whl",
             "version": "==1.6.4.post1"

@@ -1,4 +1,3 @@
 from sortingalgs.SortingAlgorithm import SortingAlgorithm
 from sortingalgs.BubbleSort import BubbleSort
 from sortingalgs.SelectionSort.SelectionSort import SelectionSort
-from sortingalgs.MergeSort.MergeSort import MergeSort

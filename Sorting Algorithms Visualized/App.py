@@ -17,10 +17,12 @@ from SortingList import SortingList
 
 
 class App:
+    BUBBLE_SORT = BubbleSort(SortingList(NUM_BLOCKS))
+    SELECTION_SORT = SelectionSort(SortingList(NUM_BLOCKS))
 
     def __init__(self):
         pygame.init()
-        self.sorting_alg = MergeSort(SortingList(NUM_BLOCKS))  # selects the sorting algorithm
+        self.sorting_alg = self.BUBBLE_SORT  # selects the sorting algorithm
         self._running = True
         self.screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
         for block in self.sorting_alg.initialize_display():  # wipe the screen

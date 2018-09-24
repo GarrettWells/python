@@ -1,2 +1,4 @@
+import socket
+
+SERVER_ADDRESS = socket.gethostbyname(socket.gethostname())
 PORT = 8000
-SERVER_ADDRESS = '192.168.1.214'
