@@ -1,0 +1,13 @@
+[[source]]
+url = "https://pypi.org/simple"
+verify_ssl = true
+name = "pypi"
+
+[packages]
+shapely = {path = "./Shapely-1.6.4.post1-cp37-cp37m-win_amd64.whl"}
+matplotlib = "*"
+
+[dev-packages]
+
+[requires]
+python_version = "3.7"

@@ -1,0 +1,4 @@
+this is text from the file "test.txt"
+
+\n
+this is a test
