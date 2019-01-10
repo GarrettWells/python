@@ -24,15 +24,16 @@ class GUI(QtWidgets.QMainWindow):
 
         reddit = praw.Reddit(client_id=GUI._CLIENT_ID, client_secret=GUI._CLIENT_SECRET, user_agent=GUI._USER_AGENT,
                              username=GUI._USERNAME, password=GUI._PASSWORD)
-        self.editWindow.setHidden(True)
+        self.edit_window = MyQStackedWidget(self.editWindow.parent(), self.editWindow)
+        self.edit_window.setHidden(True)
 
         ###############
         # CONNECTIONS #
         ###############
-        self.EditSearchTerms.clicked.connect(self.editWindow.show)
-        self.EditSubreddits.clicked.connect(self.editWindow.show)
-        self.EditSearchTerms.clicked.connect(self.editWindow.setCurrentIndex, 0)
-        self.EditSubreddits.clicked.connect(self.editWindow.setCurrentIndex, 1)
+        self.EditSearchTerms.clicked.connect(self.edit_window.show)
+        self.EditSubreddits.clicked.connect(self.edit_window.show)
+        self.EditSearchTerms.clicked.connect(self.edit_window.setCurrentIndex, 0)
+        self.EditSubreddits.clicked.connect(self.edit_window.setCurrentIndex, 1)
         self.newSubmission.connect(self.print_to_stream_of_deals)
         QApplication.instance().focusChanged.connect(self.edit_window_lost_focus)
 
@@ -60,12 +61,12 @@ class GUI(QtWidgets.QMainWindow):
 
     def edit_window_lost_focus(self, old: QtWidgets.QWidget, new: QtWidgets.QWidget):
         if old is not None:
-            if self.editWindow.isAncestorOf(old):
-                if new != self.editWindow:
+            if self.edit_window.isAncestorOf(old):
+                if new != self.edit_window:
                     self.lose_edit_window_focus()
 
     def lose_edit_window_focus(self):
-        self.editWindow.hide()
+        self.edit_window.hide()
 
     def listen_for_submissions(self, multi):
         for submission in multi.stream.submissions(pause_after=0,
