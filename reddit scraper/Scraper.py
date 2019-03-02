@@ -16,7 +16,7 @@ class GUI(QtWidgets.QMainWindow):
     _CLIENT_SECRET = 'ycpN023w7z7jhBGlr120UfUCYps'
     _USER_AGENT = 'Python:Sale Finder:1.0.0 (by /u/sugartits1122)'
     _USERNAME = 'sugartits1122'
-    _PASSWORD = 'dominguez1*'
+    _PASSWORD = ''
 
     def __init__(self):
         super(GUI, self).__init__()
