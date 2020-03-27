@@ -30,9 +30,11 @@ class GUI(QtWidgets.QMainWindow):
         # CONNECTIONS #
         ###############
         self.EditSearchTerms.clicked.connect(self.editWindow.show)
+        self.EditSearchTerms.clicked.connect(lambda: self.editWindow.setCurrentIndex(0))
+
         self.EditSubreddits.clicked.connect(self.editWindow.show)
-        self.EditSearchTerms.clicked.connect(self.editWindow.setCurrentIndex, 0)
-        self.EditSubreddits.clicked.connect(self.editWindow.setCurrentIndex, 1)
+        self.EditSubreddits.clicked.connect(lambda: self.editWindow.setCurrentIndex(1))
+
         self.newSubmission.connect(self.print_to_stream_of_deals)
         QApplication.instance().focusChanged.connect(self.edit_window_lost_focus)
 
